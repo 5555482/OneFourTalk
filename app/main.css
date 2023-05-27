@@ -1,0 +1,144 @@
+/* Global Styles */
+body {
+  font-family: "Public Sans", sans-serif;
+  color: #333;
+  background-color: #f7f7f7;
+}
+
+/* Header */
+.header-bar {
+  background-color: #292929;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-search-icon,
+.header-chat-icon {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.header-chat-icon {
+  position: relative;
+}
+
+.chat-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #ff5757;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Avatar */
+.avatar-small,
+.avatar-tiny {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  top: -3px;
+}
+
+.avatar-tiny {
+  width: 24px;
+  height: 24px;
+}
+
+/* Form Control */
+.form-control-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #292929;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-group .liveValidateMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 6px 10px;
+  background-color: #ff5757;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.form-group .liveValidateMessage--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px;
+  color: #292929;
+}
+
+p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  margin: 0 0 20px;
+  padding-left: 20px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
