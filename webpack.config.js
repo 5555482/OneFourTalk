@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   entry: "./app/Main.js",
@@ -15,7 +15,8 @@ module.exports = {
       directory: path.join(__dirname, "app")
     },
     liveReload: false,
-    hot: true
+    hot: true,
+    historyApiFallback: { index: "index.html" }
   },
   module: {
     rules: [
@@ -25,10 +26,13 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react", ["@babel/preset-env", { targets: { node: "12" } }]]
+            presets: [
+              "@babel/preset-react",
+              ["@babel/preset-env", { targets: { node: "12" } }]
+            ]
           }
         }
       }
     ]
   }
-}
+};
