@@ -12,7 +12,9 @@ function HeaderLoggedOut(props) {
         password
       });
       if (response.data) {
-        console.log(response.data);
+        localStorage.setItem("onefourtalkToken", response.data.token);
+        localStorage.setItem("onefourtalkUsername", response.data.username);
+        localStorage.setItem("onefourtalkAvatar", response.data.avatar);
         props.setLoggedIn(true);
       } else {
         console.log("Incorrect username / password");
