@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Axios from "axios";
+Axios.defaults.baseURL = "http://localhost:8080";
 
 // My Components
 import Header from "./components/Header";
@@ -9,6 +11,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Terms from "./components/Terms";
 import Home from "./components/Home";
+import CreatePost from "./components/CreatePost";
 
 function Main() {
   const [loggedIn, setLoggedIn] = useState(
@@ -25,6 +28,7 @@ function Main() {
         )}
         <Route path="/about-us" element={<About />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/create-post" element={<CreatePost />} />
       </Routes>
       <Footer />
     </BrowserRouter>
