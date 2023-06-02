@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Page from "./Page";
 import Axios from "axios";
 
@@ -6,14 +7,17 @@ function CreatePost() {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
 
+  const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await Axios.post("/create-post", {
+      const response = await Axios.post("/create-post", {
         title,
         body,
         token: localStorage.getItem("onefourtalkToken")
       });
+      navigate(`/post/${response.data}`);
       console.log("New post was created.");
     } catch (e) {
       console.log("There was a problem.");
