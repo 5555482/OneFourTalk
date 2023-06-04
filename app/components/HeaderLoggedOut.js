@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
+import ExampleContext from "../ExampleContext";
 
 function HeaderLoggedOut(props) {
+  const { setLoggedIn } = useContext(ExampleContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await Axios.post("/login", {
-        username,
-        password
-      });
+      const response = await Axios.post("/login", { username, password });
       if (response.data) {
         localStorage.setItem("onefourtalkToken", response.data.token);
         localStorage.setItem("onefourtalkUsername", response.data.username);
         localStorage.setItem("onefourtalkAvatar", response.data.avatar);
-        props.setLoggedIn(true);
+        setLoggedIn(true);
       } else {
-        console.log("Incorrect username / password");
+        console.log("Incorrect username / password.");
       }
     } catch (e) {
-      console.log("There was a problem");
+      console.log("There was a problem.");
     }
   }
+
   return (
     <form onSubmit={handleSubmit} className="mb-0 pt-2 pt-md-0">
       <div className="row align-items-center">

@@ -18,10 +18,10 @@ function Footer() {
         </Link>
       </p>
       <p className="m-0">
-        Copyright &copy; {new Date().getFullYear()}{" "}
-        <Link to="/" className="text-muted">
+        Copyright &copy; 2020{" "}
+        <a href="/" className="text-muted">
           OneFourTalk
-        </Link>
+        </a>
         . All rights reserved.
       </p>
     </footer>
