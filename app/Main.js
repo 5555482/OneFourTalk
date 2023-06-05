@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { useImmerReducer } from "use-immer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -22,13 +22,19 @@ import FlashMessages from "./components/FlashMessages";
 function Main() {
   const initialState = {
     loggedIn: Boolean(localStorage.getItem("onefourtalkToken")),
-    flashMessages: []
+    flashMessages: [],
+    user: {
+      token: localStorage.getItem("onefourtalkToken"),
+      username: localStorage.getItem("onefourtalkUsername"),
+      avatar: localStorage.getItem("onefourtalkAvatar")
+    }
   };
 
   function ourReducer(draft, action) {
     switch (action.type) {
       case "login":
         draft.loggedIn = true;
+        draft.user = action.data;
         return;
       case "logout":
         draft.loggedIn = false;
@@ -40,6 +46,17 @@ function Main() {
   }
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+  useEffect(() => {
+    if (state.loggedIn) {
+      localStorage.setItem("onefourtalkToken", state.user.token);
+      localStorage.setItem("onefourtalkUsername", state.user.username);
+      localStorage.setItem("onefourtalkAvatar", state.user.avatar);
+    } else {
+      localStorage.removeItem("onefourtalkToken");
+      localStorage.removeItem("onefourtalkUsername");
+      localStorage.removeItem("onefourtalkAvatar");
+    }
+  }, [state.loggedIn]);
 
   return (
     <StateContext.Provider value={state}>

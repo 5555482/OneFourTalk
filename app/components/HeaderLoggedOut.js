@@ -12,10 +12,7 @@ function HeaderLoggedOut(props) {
     try {
       const response = await Axios.post("/login", { username, password });
       if (response.data) {
-        localStorage.setItem("onefourtalkToken", response.data.token);
-        localStorage.setItem("onefourtalkUsername", response.data.username);
-        localStorage.setItem("onefourtalkAvatar", response.data.avatar);
-        appDispatch({ type: "login" });
+        appDispatch({ type: "login", data: response.data });
       } else {
         console.log("Incorrect username / password.");
       }
