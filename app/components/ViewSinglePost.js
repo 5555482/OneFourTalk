@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Page from "./Page";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
+import LoadingIcon from "./LoadingIcon";
 
 function ViewSinglePost() {
   const { id } = useParams();
@@ -24,7 +25,7 @@ function ViewSinglePost() {
   if (isLoading)
     return (
       <Page title="...">
-        <div>Loading...</div>
+        <LoadingIcon />
       </Page>
     );
 
