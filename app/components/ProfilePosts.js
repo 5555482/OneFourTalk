@@ -35,6 +35,7 @@ function ProfilePosts() {
           <Link
             key={post._id}
             className="list-group-item list-group-item-action"
+            to={`/post/${post._id}`}
           >
             <img className="avatar-tiny" src={appState.user.avatar} />{" "}
             <strong>{post.title}</strong>{" "}
