@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import Page from "./Page";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import StateContext from "../StateContext";
 import ProfilePosts from "./ProfilePosts";
@@ -31,14 +31,11 @@ function Profile() {
 
   return (
     <Page title="Profile Screen">
-      <h2>
-        <img className="avatar-small" src={profileData.profileAvatar} />{" "}
-        {profileData.profileUsername}
-        <button className="btn btn-primary btn-sm ml-2">
-          Follow <i className="fas fa-user-plus"></i>
-        </button>
-      </h2>
-
+      <img className="avatar-small mr-2 ml-2" src={profileData.profileAvatar} />{" "}
+      {profileData.profileUsername}
+      <Link className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 ml-2">
+        Follow <i className="fas fa-user-plus"></i>
+      </Link>
       <div className="profile-nav nav nav-tabs pt-2 mb-4">
         <a href="#" className="active nav-item nav-link">
           Posts: {profileData.counts.postCount}
