@@ -21,6 +21,7 @@ import FlashMessages from "./components/FlashMessages";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
+import Search from "./components/Search";
 
 function Main() {
   const initialState = {
@@ -30,7 +31,8 @@ function Main() {
       token: localStorage.getItem("onefourtalkToken"),
       username: localStorage.getItem("onefourtalkUsername"),
       avatar: localStorage.getItem("onefourtalkAvatar")
-    }
+    },
+    isSearchOpen: false
   };
 
   function ourReducer(draft, action) {
@@ -44,6 +46,12 @@ function Main() {
         return;
       case "flashMessage":
         draft.flashMessages.push(action.value);
+        return;
+      case "openSearch":
+        draft.isSearchOpen = true;
+        return;
+      case "closeSearch":
+        draft.isSearchOpen = false;
         return;
     }
   }
@@ -80,6 +88,7 @@ function Main() {
             <Route path="/terms" element={<Terms />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          {state.isSearchOpen ? <Search /> : ""}
           <Footer />
         </BrowserRouter>
       </DispatchContext.Provider>
