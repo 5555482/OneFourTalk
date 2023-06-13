@@ -23,6 +23,8 @@ import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
+import ProfileFollowers from "./components/ProfileFollowers";
+import ProfileFollowing from "./components/ProfileFollowing";
 
 function Main() {
   const initialState = {
@@ -87,6 +89,8 @@ function Main() {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/about-us" element={<About />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/profile-followers" element={<ProfileFollowers />} />
+            <Route path="/profile-following" element={<ProfileFollowing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CSSTransition

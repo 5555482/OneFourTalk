@@ -46,14 +46,14 @@ function HeaderLoggedIn(props) {
       </Link>
       <ReactTooltip place="bottom" id="profile" className="custom-tooltip" />
       <Link
-        className="bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 ml-2"
+        className="inline-block text-sm px-4 py-2 mr-2 ml-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
         to="/create-post"
       >
         Create Post
       </Link>
       <Link
         onClick={handleLogout}
-        className="bg-transparent hover:bg-blue-500 text-white hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 ml-2"
+        className="inline-block text-sm px-4 py-2 mr-2 ml-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
       >
         Sign Out
       </Link>
