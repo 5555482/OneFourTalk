@@ -20,7 +20,7 @@ function ProfilePosts() {
       }
     }
     fetchPosts();
-  }, []);
+  }, [username]);
 
   if (isLoading) return <div>Loading...</div>;
 
