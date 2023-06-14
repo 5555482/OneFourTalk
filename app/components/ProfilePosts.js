@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import StateContext from "../StateContext";
+import Post from "./Post";
 
 function ProfilePosts() {
   const appState = useContext(StateContext);
@@ -27,21 +28,7 @@ function ProfilePosts() {
   return (
     <div className="list-group">
       {posts.map(post => {
-        const date = new Date(post.createdDate);
-        const dateFormatted = `${
-          date.getMonth() + 1
-        }/${date.getDate()}/${date.getFullYear()}`;
-        return (
-          <Link
-            key={post._id}
-            className="list-group-item list-group-item-action"
-            to={`/post/${post._id}`}
-          >
-            <img className="avatar-tiny" src={appState.user.avatar} />{" "}
-            <strong>{post.title}</strong>{" "}
-            <span className="text-muted small">on {dateFormatted} </span>
-          </Link>
-        );
+        return <Post noAuthor={true} post={post} key={post._id} />;
       })}
     </div>
   );
