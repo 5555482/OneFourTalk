@@ -2,9 +2,9 @@ import React, { useState, useReducer, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { useImmerReducer } from "use-immer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import Axios from "axios";
 Axios.defaults.baseURL = "http://localhost:8080";
-import { CSSTransition } from "react-transition-group";
 
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
@@ -23,8 +23,6 @@ import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
-import ProfileFollowers from "./components/ProfileFollowers";
-import ProfileFollowing from "./components/ProfileFollowing";
 import Chat from "./components/Chat";
 
 function Main() {
@@ -75,6 +73,7 @@ function Main() {
   }
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+
   useEffect(() => {
     if (state.loggedIn) {
       localStorage.setItem("onefourtalkToken", state.user.token);
@@ -86,6 +85,33 @@ function Main() {
       localStorage.removeItem("onefourtalkAvatar");
     }
   }, [state.loggedIn]);
+
+  // Check if token has expired or not on first render
+  useEffect(() => {
+    if (state.loggedIn) {
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchResults() {
+        try {
+          const response = await Axios.post(
+            "/checkToken",
+            { token: state.user.token },
+            { cancelToken: ourRequest.token }
+          );
+          if (!response.data) {
+            dispatch({ type: "logout" });
+            dispatch({
+              type: "flashMessage",
+              value: "Your session has expired. Please log in again."
+            });
+          }
+        } catch (e) {
+          console.log("There was a problem or the request was cancelled.");
+        }
+      }
+      fetchResults();
+      return () => ourRequest.cancel();
+    }
+  }, []);
 
   return (
     <StateContext.Provider value={state}>
@@ -104,8 +130,6 @@ function Main() {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/about-us" element={<About />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/profile-followers" element={<ProfileFollowers />} />
-            <Route path="/profile-following" element={<ProfileFollowing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CSSTransition
