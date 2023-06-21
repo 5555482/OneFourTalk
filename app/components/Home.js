@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Page from "./Page";
 import StateContext from "../StateContext";
 import { useImmer } from "use-immer";
-import LoadingIcon from "./LoadingIcon";
+import LoadingIcon from "./LoadingDotsIcon";
 import Axios from "axios";
 import Post from "./Post";
 

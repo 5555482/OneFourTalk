@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoadingIcon() {
+function LoadingDotsIcon() {
   return (
     <div className="dots-loading">
       <div></div>
@@ -8,4 +8,4 @@ function LoadingIcon() {
   );
 }
 
-export default LoadingIcon;
+export default LoadingDotsIcon;

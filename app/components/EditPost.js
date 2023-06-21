@@ -3,7 +3,7 @@ import { useImmerReducer } from "use-immer";
 import Page from "./Page";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import LoadingIcon from "./LoadingIcon";
+import LoadingIcon from "./LoadingDotsIcon";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
 import NotFound from "./NotFound";
