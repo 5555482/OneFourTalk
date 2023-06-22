@@ -44,7 +44,7 @@ function HeaderLoggedIn(props) {
       >
         <i className="fas fa-comment"></i>
         {appState.unreadChatCount ? (
-          <span className="chat-count-badge text-white">
+          <span className="chat-count-badge text-white mr-2">
             {appState.unreadChatCount < 10 ? appState.unreadChatCount : "9+"}
           </span>
         ) : (
@@ -61,12 +61,18 @@ function HeaderLoggedIn(props) {
         <img className="small-header-avatar" src={appState.user.avatar} />
       </Link>
       <ReactTooltip place="bottom" id="profile" className="custom-tooltip" />{" "}
-      <Link className="btn btn-sm btn-success mr-2" to="/create-post">
+      <Link
+        className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mr-2"
+        to="/create-post"
+      >
         Create Post
       </Link>{" "}
-      <button onClick={handleLogout} className="btn btn-sm btn-secondary">
+      <Link
+        onClick={handleLogout}
+        className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded mr-2"
+      >
         Sign Out
-      </button>
+      </Link>
     </div>
   );
 }

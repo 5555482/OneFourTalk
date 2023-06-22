@@ -36,7 +36,7 @@ function HeaderLoggedOut(props) {
           <input
             onChange={e => setUsername(e.target.value)}
             name="username"
-            className="form-control form-control-sm input-dark"
+            className="form-control input-light"
             type="text"
             placeholder="Username"
             autoComplete="off"
@@ -46,13 +46,15 @@ function HeaderLoggedOut(props) {
           <input
             onChange={e => setPassword(e.target.value)}
             name="password"
-            className="form-control form-control-sm input-dark"
+            className="form-control input-light"
             type="password"
             placeholder="Password"
           />
         </div>
         <div className="col-md-auto">
-          <button className="btn btn-success btn-sm">Sign In</button>
+          <button className="bg-transparent text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
+            Sign In
+          </button>
         </div>
       </div>
     </form>

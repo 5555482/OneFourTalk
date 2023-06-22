@@ -12,10 +12,13 @@ function Header(props) {
     <HeaderLoggedOut />
   );
   return (
-    <header className="header-bar header mb-3">
+    <header className="header-bar header mb-3 flex items-center justify-between flex-wrap bg-teal-500 p-6">
       <div className="container d-flex flex-column flex-md-row align-items-center p-3">
         <h4 className="my-0 mr-md-auto font-weight-normal">
-          <Link to="/" className="text-white">
+          <Link
+            to="/"
+            className="flex items-center flex-shrink-0 text-white mr-6"
+          >
             OneFourTalk
           </Link>
         </h4>
